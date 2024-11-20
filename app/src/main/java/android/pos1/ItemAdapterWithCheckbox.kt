@@ -1,0 +1,51 @@
+package android.pos1
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+
+class ItemAdapterWithCheckbox(
+    private val items: List<Item>, // Daftar item
+    private val onSelectionChanged: (List<Item>) -> Unit // Callback untuk item yang dipilih
+) : RecyclerView.Adapter<ItemAdapterWithCheckbox.ItemViewHolder>() {
+
+    private val selectedItems = mutableListOf<Item>() // Daftar item yang dipilih
+
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val itemCheckbox: CheckBox = itemView.findViewById(R.id.itemCheckbox)
+        private val itemName: TextView = itemView.findViewById(R.id.itemName)
+        private val itemPrice: TextView = itemView.findViewById(R.id.itemPrice)
+
+        fun bind(item: Item) {
+            itemName.text = item.name
+            itemPrice.text = "Rp ${item.price}"
+
+            // Update status checkbox
+            itemCheckbox.isChecked = selectedItems.contains(item)
+
+            // Handle checkbox click
+            itemCheckbox.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    selectedItems.add(item)
+                } else {
+                    selectedItems.remove(item)
+                }
+                onSelectionChanged(selectedItems) // Callback ketika item berubah
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_row, parent, false)
+        return ItemViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        holder.bind(items[position])
+    }
+
+    override fun getItemCount(): Int = items.size
+}

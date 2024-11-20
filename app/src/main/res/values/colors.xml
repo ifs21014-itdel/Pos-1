@@ -1,0 +1,23 @@
+<resources>
+    <!-- Background -->
+    <color name="login_background">#F3F4F6</color> <!-- Abu-abu lembut -->
+
+    <!-- Text Colors -->
+    <color name="text_color">#333333</color> <!-- Hitam pekat untuk teks -->
+    <color name="hint_color">#9CA3AF</color> <!-- Abu-abu terang untuk hint -->
+
+    <!-- Button -->
+    <color name="button_color">#4CAF50</color> <!-- Hijau segar -->
+    <color name="white">#FFFFFF</color> <!-- Putih untuk teks di tombol -->
+
+    <!-- Border and Icons -->
+    <color name="border_color">#D1D5DB</color> <!-- Abu-abu medium untuk border -->
+
+    <!-- Links -->
+    <color name="link_color">#2563EB</color> <!-- Biru untuk teks tautan -->
+
+    <!-- Primary Colors -->
+    <color name="colorPrimary">#4CAF50</color> <!-- Warna hijau segar -->
+    <color name="colorPrimaryDark">#388E3C</color> <!-- Hijau gelap -->
+    <color name="colorAccent">#FFC107</color> <!-- Warna kuning terang -->
+</resources>
